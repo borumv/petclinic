@@ -5,10 +5,6 @@ import com.example.models.Person;
 
 import java.util.Set;
 
-public interface OwnerService {
+public interface OwnerService extends CrudService<Owner, Long> {
 
-    Owner findByFirstName(String firstName);
-    Owner findById(Long id);
-    Set<Owner> findAll();
-    Owner save(Owner person);
 }
