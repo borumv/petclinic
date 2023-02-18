@@ -1,4 +1,4 @@
-package com.example.petclinic.models;
+package com.example.models;
 
 public class Person {
     private String firstName;
