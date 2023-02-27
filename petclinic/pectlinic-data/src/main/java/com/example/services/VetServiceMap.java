@@ -5,7 +5,7 @@ import com.example.models.Vet;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractCrudServiceMap<Vet, Long> implements CrudService<Vet, Long>{
+public class VetServiceMap extends AbstractCrudServiceMap<Vet, Long> implements VetService{
     @Override
     public void deleteById(Long aLong) {
         super.deleteById(aLong);

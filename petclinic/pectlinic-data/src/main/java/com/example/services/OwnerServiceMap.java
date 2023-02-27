@@ -5,7 +5,7 @@ import com.example.models.Pet;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> implements CrudService<Owner, Long>{
+public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> implements OwnerService{
     @Override
     public void deleteById(Long aLong) {
         super.deleteById(aLong);

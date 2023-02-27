@@ -9,6 +9,7 @@ public class OwnerController {
 
     @RequestMapping({"/", "/index", "index.html", ""})
     public String owners(){
+        System.out.println("tralala");
         return "owners/index";
     }
 }
