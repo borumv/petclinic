@@ -6,8 +6,8 @@
     <title>Index Page</title>
 </head>
 <body>
-<!--/*@thymesVar id="owner" type="com.example.models.Owner"*/-->
-    <p th:text="'List owners...'"> Hello!</p>
+<!--/*@thymesVar id="vet" type="com.example.models.Vet"*/-->
+    <p th:text="'List of vets...'"> Hello!</p>
     <table>
         <thread>
             <tr>
@@ -17,10 +17,10 @@
             </tr>
         </thread>
         <tbody>
-        <tr th:each="owner:${owners}">
-            <td th:text="${owner.id}">1</td>
-            <td th:text="${owner.firstName}">B</td>
-            <td th:text="${owner.lastName}">V</td>
+        <tr th:each="vet:${vets}">
+            <td th:text="${vet.id}">1</td>
+            <td th:text="${vet.firstName}">B</td>
+            <td th:text="${vet.lastName}">V</td>
         </tr>
         </tbody>
     </table>
