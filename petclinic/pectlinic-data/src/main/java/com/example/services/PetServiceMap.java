@@ -30,7 +30,7 @@ public class PetServiceMap extends AbstractCrudServiceMap<Pet, Long> implements 
     }
 
     @Override
-    public Pet save(Long aLong, Pet entity) {
-        return super.save(aLong, entity);
+    public Pet save(Pet entity) {
+        return super.save(entity);
     }
 }

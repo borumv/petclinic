@@ -27,7 +27,7 @@ public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> impleme
     }
 
     @Override
-    public Owner save(Long aLong, Owner entity) {
-        return super.save(aLong, entity);
+    public Owner save(Owner entity) {
+        return super.save(entity);
     }
 }

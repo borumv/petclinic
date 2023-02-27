@@ -30,7 +30,7 @@ public class VetServiceMap extends AbstractCrudServiceMap<Vet, Long> implements 
 
 
     @Override
-    public Vet save(Long aLong, Vet entity) {
-        return super.save(aLong, entity);
+    public Vet save(Vet entity) {
+        return super.save(entity);
     }
 }
