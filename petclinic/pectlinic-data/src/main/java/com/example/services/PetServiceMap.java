@@ -1,9 +1,11 @@
 package com.example.services;
 
 import com.example.models.Pet;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractCrudServiceMap<Pet, Long> implements CrudService<Pet, Long> {
 
 

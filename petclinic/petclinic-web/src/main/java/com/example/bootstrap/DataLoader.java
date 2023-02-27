@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
-    private final VetService vetService;
 
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    private final VetService vetService;
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
@@ -45,5 +45,7 @@ public class DataLoader implements CommandLineRunner {
         vet2.setLastName("Kram");
         vetService.save(vet2.getId(), vet2);
         System.out.println("Load vets...");
+
+        System.out.println(ownerService.findById(1L).getFirstName());
     }
 }
