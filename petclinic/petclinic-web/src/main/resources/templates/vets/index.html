@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"
-  xmlns:th="http://www.thymeleaf.org">
+  xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 <head>
     <meta charset="UTF-8">
     <title>Index Page</title>
 </head>
 <body>
 <!--/*@thymesVar id="vet" type="com.example.models.Vet"*/-->
-    <p th:text="'List of vets...'"> Hello!</p>
-    <table>
-        <thread>
+    <h2 th:text="'List of vets...'"> Hello!</h2>
+    <table class="table table-striped">
+        <thread >
             <tr>
                 <th>Id</th>
                 <th>First Name</th>
