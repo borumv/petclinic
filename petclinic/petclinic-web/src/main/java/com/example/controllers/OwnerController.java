@@ -18,4 +18,9 @@ public class OwnerController {
         System.out.println("tralala");
         return "owners/index";
     }
+
+    @RequestMapping({"/find"})
+    public String findOwners(Model model){
+        return "notimplementedyet";
+    }
 }
