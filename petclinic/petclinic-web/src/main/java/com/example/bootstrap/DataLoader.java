@@ -1,10 +1,14 @@
 package com.example.bootstrap;
 
 import com.example.models.Owner;
+import com.example.models.Speciality;
 import com.example.models.Vet;
 import com.example.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -31,12 +35,16 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Load owners...");
 
-        Vet vet1 = new Vet();
+        Set<Speciality> specialities = new HashSet<>();
+        specialities.add(new Speciality("Dantist"));
+        specialities.add(new Speciality("Newrolog"));
+
+        Vet vet1 = new Vet(specialities);
         vet1.setFirstName("Michel");
         vet1.setLastName("Jordan");
         vetService.save(vet1);
 
-        Vet vet2 = new Vet();
+        Vet vet2 = new Vet(specialities);
         vet2.setFirstName("Victor");
         vet2.setLastName("Kram");
         vetService.save(vet2);
