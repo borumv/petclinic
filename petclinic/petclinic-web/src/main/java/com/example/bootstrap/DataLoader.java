@@ -6,8 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -15,23 +13,38 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+
+    private final SpecialitiesService specialitiesService;
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialitiesService = specialitiesService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        loadData();
+    }
+
+
+    private void loadData() {
+        System.out.println("Start to load data");
         PetType cat = new PetType();
         cat.setName("cat");
-        petTypeService.save(cat);
+        PetType savedCat = petTypeService.save(cat);
 
         PetType dog = new PetType();
         dog.setName("dog");
-        petTypeService.save(dog);
+        PetType savedDog = petTypeService.save(dog);
 
+        Speciality radiology = new Speciality("Raiology");
+        Speciality savedRadiology = specialitiesService.save(radiology);
+        Speciality surgery = new Speciality("Surgery");
+        Speciality savedSurgery = specialitiesService.save(surgery);
+        Speciality dentistry = new Speciality("Dentistry");
+        Speciality savedDentisry = specialitiesService.save(dentistry);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Boris");
@@ -41,9 +54,10 @@ public class DataLoader implements CommandLineRunner {
         owner1.setTelephone("+375294523164");
         Pet dogJack = new Pet();
         dogJack.setBirthdate(LocalDate.now());
-        dogJack.setPetType(dog);
+        dogJack.setPetType(savedDog);
         dogJack.setName("Jack");
         dogJack.setOwner(owner1);
+        owner1.getPets().add(dogJack);
 
         ownerService.save(owner1);
 
@@ -55,26 +69,29 @@ public class DataLoader implements CommandLineRunner {
         owner2.setTelephone("+37529456464");
         Pet catBars = new Pet();
         catBars.setBirthdate(LocalDate.now());
-        catBars.setPetType(cat);
+        catBars.setPetType(savedCat);
         catBars.setName("Jack");
         catBars.setOwner(owner2);
+        owner2.getPets().add(catBars);
         ownerService.save(owner2);
-
-        System.out.println("Load owners...");
-
-
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Michel");
         vet1.setLastName("Jordan");
+        vet1.getSpecialities().add(savedRadiology);
+        vet1.getSpecialities().add(savedDentisry);
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Victor");
         vet2.setLastName("Kram");
+        vet2.getSpecialities().add(savedSurgery);
         vetService.save(vet2);
-        System.out.println("Load vets...");
+        System.out.println("End load data...");
 
-        System.out.println(ownerService.findById(1L).getFirstName());
+        System.out.println("total count Pets - " + ownerService.findAll().stream().map(item -> item.getPets().size()).reduce(Integer::sum).get());
+        System.out.println("total count Owners - " + (long) ownerService.findAll().size());
+        System.out.println("total count Vets - " + vetService.findAll().size());
+        System.out.println("total count Specialities - " + specialitiesService.findAll().size());
     }
 }
