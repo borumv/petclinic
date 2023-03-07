@@ -1,6 +1,7 @@
 package com.example.bootstrap;
 
 import com.example.models.Owner;
+import com.example.models.PetType;
 import com.example.models.Speciality;
 import com.example.models.Vet;
 import com.example.services.*;
@@ -14,15 +15,26 @@ import java.util.Set;
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
-
     private final VetService vetService;
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    private final PetTypeService petTypeService;
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType cat = new PetType();
+        cat.setName("cat");
+        petTypeService.save(cat);
+
+        PetType dog = new PetType();
+        dog.setName("dog");
+        petTypeService.save(dog);
+
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Boris");
         owner1.setLastName("Vlasevsky");
