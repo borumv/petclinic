@@ -4,6 +4,9 @@ import com.example.services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.yaml.snakeyaml.emitter.ScalarAnalysis;
+
+import java.util.Scanner;
 
 @RequestMapping("owners")
 @Controller
