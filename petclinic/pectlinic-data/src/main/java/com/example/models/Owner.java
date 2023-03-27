@@ -8,7 +8,6 @@ import java.util.Set;
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
-
     @Column(name = "adress")
     private String address;
     @Column(name = "city")
