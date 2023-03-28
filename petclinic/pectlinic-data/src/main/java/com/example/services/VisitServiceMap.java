@@ -2,9 +2,11 @@ package com.example.services;
 
 import com.example.models.Pet;
 import com.example.models.Visit;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class VisitServiceMap extends AbstractCrudServiceMap<Visit, Long> implements VisitService{
     @Override
     public void deleteById(Long aLong) {
