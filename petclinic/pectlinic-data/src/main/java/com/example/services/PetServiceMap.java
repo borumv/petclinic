@@ -7,8 +7,6 @@ import java.util.Set;
 
 @Service
 public class PetServiceMap extends AbstractCrudServiceMap<Pet, Long> implements PetService{
-
-
     @Override
     public void deleteById(Long aLong) {
         super.deleteById(aLong);
@@ -17,11 +15,6 @@ public class PetServiceMap extends AbstractCrudServiceMap<Pet, Long> implements 
     @Override
     public void delete(Pet entity) {
         super.delete(entity);
-    }
-
-    @Override
-    public Pet findByName(String name) {
-        return null;
     }
 
     @Override
@@ -40,7 +33,7 @@ public class PetServiceMap extends AbstractCrudServiceMap<Pet, Long> implements 
     }
 
     @Override
-    public Pet findByFirstName(String firstName) {
+    public Pet findByName(String name) {
         return null;
     }
 }

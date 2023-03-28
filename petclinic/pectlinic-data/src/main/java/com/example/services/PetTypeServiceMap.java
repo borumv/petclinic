@@ -6,11 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class PetTypeServiceMap extends AbstractCrudServiceMap<PetType, Long> implements PetTypeService{
     @Override
-    public PetType findByName(String name) {
-        return null;
-    }
-
-    @Override
     public PetType save(PetType petType) {
         return super.save(petType);
     }

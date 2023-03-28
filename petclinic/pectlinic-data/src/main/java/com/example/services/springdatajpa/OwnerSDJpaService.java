@@ -10,19 +10,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-@Profile("ownerSDservice")
+@Profile("springDataJpa")
 public class OwnerSDJpaService implements OwnerService {
 
     private final OwnerRepository ownerRepository;
 
     public OwnerSDJpaService(OwnerRepository ownerRepository) {
         this.ownerRepository = ownerRepository;
-    }
-
-
-    @Override
-    public Owner findByName(String name) {
-        return ownerRepository.findOwnerByLastName(name).orElse(null);
     }
 
     @Override
@@ -50,5 +44,10 @@ public class OwnerSDJpaService implements OwnerService {
     @Override
     public void deleteById(Long aLong) {
         ownerRepository.deleteById(aLong);
+    }
+
+    @Override
+    public Owner findByName(String name) {
+        return ownerRepository.findOwnerByLastName(name).orElse(null);
     }
 }

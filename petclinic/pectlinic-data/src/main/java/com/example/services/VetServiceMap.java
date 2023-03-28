@@ -27,11 +27,6 @@ public class VetServiceMap extends AbstractCrudServiceMap<Vet, Long> implements 
     }
 
     @Override
-    public Vet findByName(String name) {
-        return null;
-    }
-
-    @Override
     public Vet findById(Long aLong) {
         return super.findById(aLong);
     }

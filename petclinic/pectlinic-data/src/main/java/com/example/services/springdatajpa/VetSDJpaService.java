@@ -3,10 +3,13 @@ package com.example.services.springdatajpa;
 import com.example.models.Vet;
 import com.example.repositories.VetRepository;
 import com.example.services.VetService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
+@Profile("springDataJpa")
 public class VetSDJpaService implements VetService {
 
     private final VetRepository vetRepository;
@@ -15,10 +18,6 @@ public class VetSDJpaService implements VetService {
         this.vetRepository = vetRepository;
     }
 
-    @Override
-    public Vet findByName(String name) {
-        return vetRepository.findByLastName(name).orElse(null);
-    }
 
     @Override
     public Vet findById(Long aLong) {

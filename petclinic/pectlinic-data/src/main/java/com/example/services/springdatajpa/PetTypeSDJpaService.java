@@ -4,10 +4,13 @@ import com.example.models.Pet;
 import com.example.models.PetType;
 import com.example.repositories.PetTypeRepository;
 import com.example.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
+@Profile("springDataJpa")
 public class PetTypeSDJpaService implements PetTypeService {
 
     private final PetTypeRepository petTypeRepository;
@@ -16,11 +19,6 @@ public class PetTypeSDJpaService implements PetTypeService {
         this.petTypeRepository = petTypeRepository;
     }
 
-
-    @Override
-    public PetType findByName(String name) {
-        return petTypeRepository.findByName(name).orElse(null);
-    }
 
     @Override
     public PetType findById(Long aLong) {

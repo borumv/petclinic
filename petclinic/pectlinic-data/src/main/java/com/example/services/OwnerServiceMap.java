@@ -1,6 +1,7 @@
 package com.example.services;
 
 import com.example.models.Owner;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.util.Set;
 
@@ -21,11 +22,6 @@ public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> impleme
     @Override
     public void delete(Owner entity) {
         super.delete(entity);
-    }
-
-    @Override
-    public Owner findByName(String name) {
-        return null;
     }
 
     @Override
@@ -57,5 +53,11 @@ public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> impleme
 
 
         return super.save(entity);
+    }
+
+
+    @Override
+    public Owner findByName(String name) {
+        return null;
     }
 }

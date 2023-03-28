@@ -6,8 +6,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class SpecialityServiceMap extends AbstractCrudServiceMap<Speciality, Long> implements SpecialitiesService{
 
-    @Override
-    public Speciality findByName(String name) {
-        return null;
-    }
 }
