@@ -24,6 +24,11 @@ public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> impleme
     }
 
     @Override
+    public Owner findByName(String name) {
+        return null;
+    }
+
+    @Override
     public Owner findById(Long aLong) {
         return super.findById(aLong);
     }

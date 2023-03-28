@@ -20,6 +20,11 @@ public class PetServiceMap extends AbstractCrudServiceMap<Pet, Long> implements 
     }
 
     @Override
+    public Pet findByName(String name) {
+        return null;
+    }
+
+    @Override
     public Pet findById(Long aLong) {
         return super.findById(aLong);
     }
