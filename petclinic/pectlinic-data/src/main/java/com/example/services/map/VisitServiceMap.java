@@ -1,18 +1,19 @@
-package com.example.services;
+package com.example.services.map;
 
-import com.example.models.Pet;
 import com.example.models.Visit;
+import com.example.services.VisitService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class VisitServiceMap extends AbstractCrudServiceMap<Visit, Long> implements VisitService{
+@Profile({"default", "map"})
+public class VisitServiceMap extends AbstractCrudServiceMap<Visit, Long> implements VisitService {
     @Override
     public void deleteById(Long aLong) {
         super.deleteById(aLong);
     }
-
     @Override
     public void delete(Visit entity) {
         super.delete(entity);

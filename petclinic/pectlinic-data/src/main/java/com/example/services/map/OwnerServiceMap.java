@@ -1,12 +1,16 @@
-package com.example.services;
+package com.example.services.map;
 
 import com.example.models.Owner;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.example.services.OwnerService;
+import com.example.services.PetService;
+import com.example.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> implements OwnerService{
+@Profile({"default", "map"})
+public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> implements OwnerService {
     private PetService petService;
 
     private PetTypeService petTypeService;

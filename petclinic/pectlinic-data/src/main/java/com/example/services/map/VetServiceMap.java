@@ -1,14 +1,17 @@
-package com.example.services;
+package com.example.services.map;
 
-import com.example.models.Owner;
 import com.example.models.Speciality;
 import com.example.models.Vet;
+import com.example.services.SpecialitiesService;
+import com.example.services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class VetServiceMap extends AbstractCrudServiceMap<Vet, Long> implements VetService{
+@Profile({"default", "map"})
+public class VetServiceMap extends AbstractCrudServiceMap<Vet, Long> implements VetService {
 
     SpecialitiesService specialitiesService;
 

@@ -91,7 +91,6 @@ public class DataLoader implements CommandLineRunner {
         vet1.getSpecialities().add(savedDentisry);
         vetService.save(vet1);
 
-
         Vet vet2 = new Vet();
         vet2.setFirstName("Victor");
         vet2.setLastName("Kram");
@@ -99,9 +98,9 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet2);
         System.out.println("End load data...");
 
-        System.out.println("total count Pets - " + ownerService.findAll().stream().map(item -> item.getPets().size()).reduce(Integer::sum).get());
-        System.out.println("total count Owners - " + (long) ownerService.findAll().size());
-        System.out.println("total count Vets - " + vetService.findAll().size());
-        System.out.println("total count Specialities - " + specialitiesService.findAll().size());
+//        System.out.println("total count Pets - " + ownerService.findAll().stream().map(item -> item.getPets().size()).reduce(Integer::sum).get());
+//        System.out.println("total count Owners - " + (long) ownerService.findAll().size());
+//        System.out.println("total count Vets - " + vetService.findAll().size());
+//        System.out.println("total count Specialities - " + specialitiesService.findAll().size());
     }
 }

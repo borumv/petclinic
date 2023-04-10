@@ -1,4 +1,4 @@
-package com.example.services;
+package com.example.services.map;
 
 import com.example.models.BaseEntity;
 
