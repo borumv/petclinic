@@ -6,9 +6,11 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+
 @Entity
 @Table
+@Getter
+@Setter
 public class Vet extends Person {
 
     @ManyToMany(fetch = FetchType.EAGER)

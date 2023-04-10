@@ -13,7 +13,7 @@ public abstract class AbstractCrudServiceMap<T extends BaseEntity, ID extends Lo
     }
 
     public void delete(T entity){
-        map.entrySet().removeIf(item -> item.equals(entity));
+        map.entrySet().removeIf(item -> item.getValue().equals(entity));
     }
 
     public T findById(ID id){

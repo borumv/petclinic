@@ -62,6 +62,10 @@ public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> impleme
 
     @Override
     public Owner findByName(String name) {
-        return null;
+
+        return this.findAll()
+                .stream().filter(item -> item.getLastName().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 }
