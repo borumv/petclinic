@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org"  th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+<!--/*@thymesVar id="owner" type="com.example.models.Owner"*/-->
+    <p th:text="'List owners...'"> Hello!</p>
+    <table class="table table-striped">
+        <thread>
+            <tr>
+                <th style="width: 150px;">Id</th>
+                <th style="width: 200px;">First Name</th>
+                <th style="width: 120px;">Last Name</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr th:each="owner:${owners}">
+            <td th:text="${owner.id}">1</td>
+            <td th:text="${owner.firstName}">B</td>
+            <td th:text="${owner.lastName}">V</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

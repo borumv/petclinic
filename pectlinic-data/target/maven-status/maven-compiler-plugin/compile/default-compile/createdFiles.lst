@@ -1,0 +1,14 @@
+com\example\services\CrudService.class
+com\example\models\Vet.class
+com\example\services\PetService.class
+com\example\services\PetTypeService.class
+com\example\services\SpecialitiesService.class
+com\example\services\OwnerService.class
+com\example\models\PetType.class
+com\example\services\VetService.class
+com\example\models\Visit.class
+com\example\models\Pet.class
+com\example\models\Owner.class
+com\example\models\Speciality.class
+com\example\models\BaseEntity.class
+com\example\models\Person.class
