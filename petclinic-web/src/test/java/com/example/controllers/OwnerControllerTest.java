@@ -79,7 +79,7 @@ class OwnerControllerTest {
         when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(123L).build());
         mockMvc.perform(get("/owners/123"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("owner/ownerDetails"))
+                .andExpect(view().name("owners/ownerDetails"))
                 .andExpect(model().attribute("owner", hasProperty("id", is(123L))));
     }
 }
