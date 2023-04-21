@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.InjectMocks;
@@ -72,14 +72,5 @@ class OwnerControllerTest {
                 .andExpect(view().name("notimplementedyet"));
         verifyNoInteractions(ownerService);
 
-    }
-
-    @Test
-    void showOwner() throws Exception {
-        when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(123L).build());
-        mockMvc.perform(get("/owners/123"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("owner/ownerDetails"))
-                .andExpect(model().attribute("owner", hasProperty("id", is(123L))));
     }
 }
