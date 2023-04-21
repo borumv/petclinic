@@ -4,3 +4,4 @@ com\example\controllers\IndexController.class
 com\example\controllers\PetController.class
 com\example\controllers\OwnerController.class
 com\example\bootstrap\DataLoader.class
+com\example\ConfigurationC.class
