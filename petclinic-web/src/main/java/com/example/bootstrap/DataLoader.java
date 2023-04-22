@@ -9,7 +9,6 @@ import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
@@ -69,13 +68,23 @@ public class DataLoader implements CommandLineRunner {
         owner2.setAddress("Tashkenskaya street, 155-23");
         owner2.setCity("Minsk");
         owner2.setTelephone("+37529456464");
+
         Pet catBars = new Pet();
         catBars.setBirthdate(LocalDate.now());
         catBars.setPetType(savedCat);
-        catBars.setName("Jack");
+        catBars.setName("Bars");
         catBars.setOwner(owner2);
         owner2.getPets().add(catBars);
         ownerService.save(owner2);
+
+        Pet dogPit = new Pet();
+        dogPit.setBirthdate(LocalDate.now());
+        dogPit.setPetType(savedCat);
+        dogPit.setName("Pit");
+        dogPit.setOwner(owner1);
+        owner2.getPets().add(dogPit);
+        ownerService.save(owner1);
+
 
         Visit catBarsVisit = new Visit();
         catBarsVisit.setDate(LocalDate.now());
@@ -90,6 +99,7 @@ public class DataLoader implements CommandLineRunner {
         vet1.getSpecialities().add(savedRadiology);
         vet1.getSpecialities().add(savedDentisry);
         vetService.save(vet1);
+
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Victor");

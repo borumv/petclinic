@@ -6,6 +6,8 @@ import com.example.services.PetService;
 import com.example.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -68,4 +70,12 @@ public class OwnerServiceMap extends AbstractCrudServiceMap<Owner, Long> impleme
                 .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public List<Owner> findOwnersByLastNameLike(String lastName) {
+        //todo impl
+        return null;
+    }
+
+
 }

@@ -18,6 +18,8 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,33 +48,25 @@ class OwnerControllerTest {
     }
 
     @Test
-    void owners() throws Exception {
-        when(ownerService.findAll()).thenReturn(ownerSet);
-        mockMvc.perform(get("/owners/"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("owners/index"))
-                .andExpect(model().attribute("owners", hasSize(2)))
-                .andExpect(model().attribute("owners", ownerSet));
-    }
-
-    @Test
-    void ownersByIndex() throws Exception {
-        when(ownerService.findAll()).thenReturn(ownerSet);
-        mockMvc.perform(get("/owners/index"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("owners/index"))
-                .andExpect(model().attribute("owners", hasSize(2)))
-                .andExpect(model().attribute("owners", ownerSet));
-    }
-
-    @Test
     void findOwners() throws Exception {
         mockMvc.perform(get("/owners/find"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("notimplementedyet"));
+                .andExpect(view().name("owners/findOwners"));
         verifyNoInteractions(ownerService);
 
     }
+
+    @Test
+    void processFormWithManyOwners() throws Exception {
+        when(ownerService.findOwnersByLastNameLike(anyString()))
+                .thenReturn(Arrays.asList(Owner.builder().id(1L).build(), Owner.builder().id(2L).build()));
+
+        mockMvc.perform(get("/owners"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownerList"))
+                .andExpect(model().attribute("selections", hasSize(2)));
+    }
+
 
     @Test
     void showOwner() throws Exception {
