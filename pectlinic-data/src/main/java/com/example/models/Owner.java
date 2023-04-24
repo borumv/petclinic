@@ -34,6 +34,31 @@ public class Owner extends Person {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Set<Pet> pets = new HashSet<>();
 
+    public Pet getPet(Long id) {
+        for (Pet pet : getPets()) {
+            if (!pet.isNew()) {
+                Long compId = pet.getId();
+                if (compId.equals(id)) {
+                    return pet;
+                }
+            }
+        }
+        return null;
+    }
+    public Pet getPet(String name, boolean ignoreNew) {
+        name = name.toLowerCase();
+        for (Pet pet : getPets()) {
+            if (!ignoreNew || !pet.isNew()) {
+                String compName = pet.getName();
+                compName = compName == null ? "" : compName.toLowerCase();
+                if (compName.equals(name)) {
+                    return pet;
+                }
+            }
+        }
+        return null;
+    }
+
 
 
 }
