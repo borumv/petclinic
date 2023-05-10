@@ -18,10 +18,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -63,6 +60,18 @@ class OwnerControllerTest {
                 .thenReturn(Arrays.asList(Owner.builder().id(1L).build(), Owner.builder().id(2L).build()));
 
         mockMvc.perform(get("/owners"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownersList"))
+                .andExpect(model().attribute("listOwners", hasSize(2)));
+    }
+
+    @Test
+    void processFormWithManyOwnersWithEmptyParam() throws Exception {
+        when(ownerService.findOwnersByLastNameLike(anyString()))
+                .thenReturn(Arrays.asList(Owner.builder().id(1L).build(), Owner.builder().id(2L).build()));
+
+        mockMvc.perform(get("/owners")
+                        .param("lastName", ""))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/ownersList"))
                 .andExpect(model().attribute("listOwners", hasSize(2)));

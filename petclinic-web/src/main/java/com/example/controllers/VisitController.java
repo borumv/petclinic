@@ -22,8 +22,6 @@ public class VisitController {
         this.ownerService = ownerService;
         this.visitService = visitService;
     }
-
-
     @InitBinder
     public void setAllowedFields(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
